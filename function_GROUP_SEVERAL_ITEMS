@@ -1,0 +1,13 @@
+def map_group(group):
+    if group == 'Mini Wraps' or group == 'Narrow Wraps':
+        return 'Small Wraps'
+    else:
+        return group
+
+processed_df['NewGroup'] = processed_df['Group'].apply(map_group)
+
+desired_groups = ['Small Wraps']
+
+filtered_small_wraps_df = processed_df[processed_df['NewGroup'].isin(desired_groups)]
+
+display(filtered_small_wraps_df)
