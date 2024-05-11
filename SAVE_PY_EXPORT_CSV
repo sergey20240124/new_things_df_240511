@@ -1,0 +1,3 @@
+%%writefile data_processing.py
+
+df.to_csv('weekly_sales.csv', index=False)
