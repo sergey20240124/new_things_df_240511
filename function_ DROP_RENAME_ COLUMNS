@@ -1,0 +1,32 @@
+# function to DROP, RENAME COLUMNS def process_dataframe(df):
+    """
+    Processes the input DataFrame by dropping and renaming specific columns.
+    
+    Parameters:
+    df (pd.DataFrame): The input DataFrame to be processed.
+    
+    Returns:
+    pd.DataFrame: The transformed DataFrame with specific columns dropped and renamed.
+    """
+    # Columns to drop
+    columns_to_drop = ['Total Order Items', 'Month', 'Week']
+    
+    # Drop specified columns
+    df_dropped = df.drop(columns=columns_to_drop, axis=1)
+    
+    # Rename a specific column
+    df_dropped = df_dropped.rename(columns={'Sessions - Total': 'Sessions'})
+    
+    # Additional columns to rename
+    columns_to_rename = {
+        'Page Views - Total': 'Page Views',
+        'Featured Offer (Buy Box) Percentage': 'Buy Box',
+        'Units Ordered': 'Units',
+        'Unit Session Percentage': 'USP',
+        'Ordered Product Sales': 'Sales'
+    }
+    
+    # Apply renaming to the DataFrame
+    df_renamed = df_dropped.rename(columns=columns_to_rename)
+    
+    return df_renamed
